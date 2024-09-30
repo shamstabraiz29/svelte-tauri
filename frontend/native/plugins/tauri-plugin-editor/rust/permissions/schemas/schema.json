@@ -1,0 +1,783 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "PermissionFile",
+  "description": "Permission file that can define a default permission, a set of permissions or a list of inlined permissions.",
+  "type": "object",
+  "properties": {
+    "default": {
+      "description": "The default permission set for the plugin",
+      "anyOf": [
+        {
+          "$ref": "#/definitions/DefaultPermission"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "set": {
+      "description": "A list of permissions sets defined",
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/PermissionSet"
+      }
+    },
+    "permission": {
+      "description": "A list of inlined permissions",
+      "default": [],
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/Permission"
+      }
+    }
+  },
+  "definitions": {
+    "DefaultPermission": {
+      "description": "The default permission set of the plugin.\n\nWorks similarly to a permission with the \"default\" identifier.",
+      "type": "object",
+      "required": [
+        "permissions"
+      ],
+      "properties": {
+        "version": {
+          "description": "The version of the permission.",
+          "type": [
+            "integer",
+            "null"
+          ],
+          "format": "uint64",
+          "minimum": 1.0
+        },
+        "description": {
+          "description": "Human-readable description of what the permission does. Tauri convention is to use <h4> headings in markdown content for Tauri documentation generation purposes.",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "permissions": {
+          "description": "All permissions this set contains.",
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "PermissionSet": {
+      "description": "A set of direct permissions grouped together under a new name.",
+      "type": "object",
+      "required": [
+        "description",
+        "identifier",
+        "permissions"
+      ],
+      "properties": {
+        "identifier": {
+          "description": "A unique identifier for the permission.",
+          "type": "string"
+        },
+        "description": {
+          "description": "Human-readable description of what the permission does.",
+          "type": "string"
+        },
+        "permissions": {
+          "description": "All permissions this set contains.",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/PermissionKind"
+          }
+        }
+      }
+    },
+    "Permission": {
+      "description": "Descriptions of explicit privileges of commands.\n\nIt can enable commands to be accessible in the frontend of the application.\n\nIf the scope is defined it can be used to fine grain control the access of individual or multiple commands.",
+      "type": "object",
+      "required": [
+        "identifier"
+      ],
+      "properties": {
+        "version": {
+          "description": "The version of the permission.",
+          "type": [
+            "integer",
+            "null"
+          ],
+          "format": "uint64",
+          "minimum": 1.0
+        },
+        "identifier": {
+          "description": "A unique identifier for the permission.",
+          "type": "string"
+        },
+        "description": {
+          "description": "Human-readable description of what the permission does. Tauri internal convention is to use <h4> headings in markdown content for Tauri documentation generation purposes.",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "commands": {
+          "description": "Allowed or denied commands when using this permission.",
+          "default": {
+            "allow": [],
+            "deny": []
+          },
+          "allOf": [
+            {
+              "$ref": "#/definitions/Commands"
+            }
+          ]
+        },
+        "scope": {
+          "description": "Allowed or denied scoped when using this permission.",
+          "allOf": [
+            {
+              "$ref": "#/definitions/Scopes"
+            }
+          ]
+        },
+        "platforms": {
+          "description": "Target platforms this permission applies. By default all platforms are affected by this permission.",
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "$ref": "#/definitions/Target"
+          }
+        }
+      }
+    },
+    "Commands": {
+      "description": "Allowed and denied commands inside a permission.\n\nIf two commands clash inside of `allow` and `deny`, it should be denied by default.",
+      "type": "object",
+      "properties": {
+        "allow": {
+          "description": "Allowed command.",
+          "default": [],
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "deny": {
+          "description": "Denied command, which takes priority.",
+          "default": [],
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "Scopes": {
+      "description": "An argument for fine grained behavior control of Tauri commands.\n\nIt can be of any serde serializable type and is used to allow or prevent certain actions inside a Tauri command. The configured scope is passed to the command and will be enforced by the command implementation.\n\n## Example\n\n```json { \"allow\": [{ \"path\": \"$HOME/**\" }], \"deny\": [{ \"path\": \"$HOME/secret.txt\" }] } ```",
+      "type": "object",
+      "properties": {
+        "allow": {
+          "description": "Data that defines what is allowed by the scope.",
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "$ref": "#/definitions/Value"
+          }
+        },
+        "deny": {
+          "description": "Data that defines what is denied by the scope. This should be prioritized by validation logic.",
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "$ref": "#/definitions/Value"
+          }
+        }
+      }
+    },
+    "Value": {
+      "description": "All supported ACL values.",
+      "anyOf": [
+        {
+          "description": "Represents a null JSON value.",
+          "type": "null"
+        },
+        {
+          "description": "Represents a [`bool`].",
+          "type": "boolean"
+        },
+        {
+          "description": "Represents a valid ACL [`Number`].",
+          "allOf": [
+            {
+              "$ref": "#/definitions/Number"
+            }
+          ]
+        },
+        {
+          "description": "Represents a [`String`].",
+          "type": "string"
+        },
+        {
+          "description": "Represents a list of other [`Value`]s.",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Value"
+          }
+        },
+        {
+          "description": "Represents a map of [`String`] keys to [`Value`]s.",
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "#/definitions/Value"
+          }
+        }
+      ]
+    },
+    "Number": {
+      "description": "A valid ACL number.",
+      "anyOf": [
+        {
+          "description": "Represents an [`i64`].",
+          "type": "integer",
+          "format": "int64"
+        },
+        {
+          "description": "Represents a [`f64`].",
+          "type": "number",
+          "format": "double"
+        }
+      ]
+    },
+    "Target": {
+      "description": "Platform target.",
+      "oneOf": [
+        {
+          "description": "MacOS.",
+          "type": "string",
+          "enum": [
+            "macOS"
+          ]
+        },
+        {
+          "description": "Windows.",
+          "type": "string",
+          "enum": [
+            "windows"
+          ]
+        },
+        {
+          "description": "Linux.",
+          "type": "string",
+          "enum": [
+            "linux"
+          ]
+        },
+        {
+          "description": "Android.",
+          "type": "string",
+          "enum": [
+            "android"
+          ]
+        },
+        {
+          "description": "iOS.",
+          "type": "string",
+          "enum": [
+            "iOS"
+          ]
+        }
+      ]
+    },
+    "PermissionKind": {
+      "type": "string",
+      "oneOf": [
+        {
+          "description": "allow-create-branch -> Enables the create_branch command without any pre-configured scope.",
+          "type": "string",
+          "enum": [
+            "allow-create-branch"
+          ]
+        },
+        {
+          "description": "deny-create-branch -> Denies the create_branch command without any pre-configured scope.",
+          "type": "string",
+          "enum": [
+            "deny-create-branch"
+          ]
+        },
+        {
+          "description": "allow-custom-cursor -> Enables the custom_cursor command without any pre-configured scope.",
+          "type": "string",
+          "enum": [
+            "allow-custom-cursor"
+          ]
+        },
+        {
+          "description": "deny-custom-cursor -> Denies the custom_cursor command without any pre-configured scope.",
+          "type": "string",
+          "enum": [
+            "deny-custom-cursor"
+          ]
+        },
+        {
+          "description": "allow-evaluate-cloud-pattern -> Enables the evaluate_cloud_pattern command without any pre-configured scope.",
+          "type": "string",
+          "enum": [
+            "allow-evaluate-cloud-pattern"
+          ]
+        },
+        {
+          "description": "deny-evaluate-cloud-pattern -> Denies the evaluate_cloud_pattern command without any pre-configured scope.",
+          "type": "string",
+          "enum": [
+            "deny-evaluate-cloud-pattern"
+          ]
+        },
+        {
+          "description": "allow-get-cloud-patterns -> Enables the get_cloud_patterns command without any pre-configured scope.",
+          "type": "string",
+          "enum": [
+            "allow-get-cloud-patterns"
+          ]
+        },
+        {
+          "description": "deny-get-cloud-patterns -> Denies the get_cloud_patterns command without any pre-configured scope.",
+          "type": "string",
+          "enum": [
+            "deny-get-cloud-patterns"
+          ]
+        },
+        {
+          "description": "allow-get-commit-history -> Enables the get_commit_history command without any pre-configured scope.",
+          "type": "string",
+          "enum": [
+            "allow-get-commit-history"
+          ]
+        },
+        {
+          "description": "deny-get-commit-history -> Denies the get_commit_history command without any pre-configured scope.",
+          "type": "string",
+          "enum": [
+            "deny-get-commit-history"
+          ]
+        },
+        {
+          "description": "allow-get-repo -> Enables the get_repo command without any pre-configured scope.",
+          "type": "string",
+          "enum": [
+            "allow-get-repo"
+          ]
+        },
+        {
+          "description": "deny-get-repo -> Denies the get_repo command without any pre-configured scope.",
+          "type": "string",
+          "enum": [
+            "deny-get-repo"
+          ]
+        },
+        {
+          "description": "allow-get-resource-item-partials -> Enables the get_resource_item_partials command without any pre-configured scope.",
+          "type": "string",
+          "enum": [
+            "allow-get-resource-item-partials"
+          ]
+        },
+        {
+          "description": "deny-get-resource-item-partials -> Denies the get_resource_item_partials command without any pre-configured scope.",
+          "type": "string",
+          "enum": [
+            "deny-get-resource-item-partials"
+          ]
+        },
+        {
+          "description": "allow-get-resource-item-schema -> Enables the get_resource_item_schema command without any pre-configured scope.",
+          "type": "string",
+          "enum": [
+            "allow-get-resource-item-schema"
+          ]
+        },
+        {
+          "description": "deny-get-resource-item-schema -> Denies the get_resource_item_schema command without any pre-configured scope.",
+          "type": "string",
+          "enum": [
+            "deny-get-resource-item-schema"
+          ]
+        },
+        {
+          "description": "allow-get-resource-item-viewport-data -> Enables the get_resource_item_viewport_data command without any pre-configured scope.",
+          "type": "string",
+          "enum": [
+            "allow-get-resource-item-viewport-data"
+          ]
+        },
+        {
+          "description": "deny-get-resource-item-viewport-data -> Denies the get_resource_item_viewport_data command without any pre-configured scope.",
+          "type": "string",
+          "enum": [
+            "deny-get-resource-item-viewport-data"
+          ]
+        },
+        {
+          "description": "allow-get-resource-items-partials -> Enables the get_resource_items_partials command without any pre-configured scope.",
+          "type": "string",
+          "enum": [
+            "allow-get-resource-items-partials"
+          ]
+        },
+        {
+          "description": "deny-get-resource-items-partials -> Denies the get_resource_items_partials command without any pre-configured scope.",
+          "type": "string",
+          "enum": [
+            "deny-get-resource-items-partials"
+          ]
+        },
+        {
+          "description": "allow-get-resource-items-viewport-data -> Enables the get_resource_items_viewport_data command without any pre-configured scope.",
+          "type": "string",
+          "enum": [
+            "allow-get-resource-items-viewport-data"
+          ]
+        },
+        {
+          "description": "deny-get-resource-items-viewport-data -> Denies the get_resource_items_viewport_data command without any pre-configured scope.",
+          "type": "string",
+          "enum": [
+            "deny-get-resource-items-viewport-data"
+          ]
+        },
+        {
+          "description": "allow-get-viewport-item-static-data -> Enables the get_viewport_item_static_data command without any pre-configured scope.",
+          "type": "string",
+          "enum": [
+            "allow-get-viewport-item-static-data"
+          ]
+        },
+        {
+          "description": "deny-get-viewport-item-static-data -> Denies the get_viewport_item_static_data command without any pre-configured scope.",
+          "type": "string",
+          "enum": [
+            "deny-get-viewport-item-static-data"
+          ]
+        },
+        {
+          "description": "allow-get-viewport-item-viewport-data -> Enables the get_viewport_item_viewport_data command without any pre-configured scope.",
+          "type": "string",
+          "enum": [
+            "allow-get-viewport-item-viewport-data"
+          ]
+        },
+        {
+          "description": "deny-get-viewport-item-viewport-data -> Denies the get_viewport_item_viewport_data command without any pre-configured scope.",
+          "type": "string",
+          "enum": [
+            "deny-get-viewport-item-viewport-data"
+          ]
+        },
+        {
+          "description": "allow-get-viewport-items-static-data -> Enables the get_viewport_items_static_data command without any pre-configured scope.",
+          "type": "string",
+          "enum": [
+            "allow-get-viewport-items-static-data"
+          ]
+        },
+        {
+          "description": "deny-get-viewport-items-static-data -> Denies the get_viewport_items_static_data command without any pre-configured scope.",
+          "type": "string",
+          "enum": [
+            "deny-get-viewport-items-static-data"
+          ]
+        },
+        {
+          "description": "allow-get-viewport-items-viewport-data -> Enables the get_viewport_items_viewport_data command without any pre-configured scope.",
+          "type": "string",
+          "enum": [
+            "allow-get-viewport-items-viewport-data"
+          ]
+        },
+        {
+          "description": "deny-get-viewport-items-viewport-data -> Denies the get_viewport_items_viewport_data command without any pre-configured scope.",
+          "type": "string",
+          "enum": [
+            "deny-get-viewport-items-viewport-data"
+          ]
+        },
+        {
+          "description": "allow-load-model -> Enables the load_model command without any pre-configured scope.",
+          "type": "string",
+          "enum": [
+            "allow-load-model"
+          ]
+        },
+        {
+          "description": "deny-load-model -> Denies the load_model command without any pre-configured scope.",
+          "type": "string",
+          "enum": [
+            "deny-load-model"
+          ]
+        },
+        {
+          "description": "allow-model-node-remove-properties -> Enables the model_node_remove_properties command without any pre-configured scope.",
+          "type": "string",
+          "enum": [
+            "allow-model-node-remove-properties"
+          ]
+        },
+        {
+          "description": "deny-model-node-remove-properties -> Denies the model_node_remove_properties command without any pre-configured scope.",
+          "type": "string",
+          "enum": [
+            "deny-model-node-remove-properties"
+          ]
+        },
+        {
+          "description": "allow-model-node-upsert-properties -> Enables the model_node_upsert_properties command without any pre-configured scope.",
+          "type": "string",
+          "enum": [
+            "allow-model-node-upsert-properties"
+          ]
+        },
+        {
+          "description": "deny-model-node-upsert-properties -> Denies the model_node_upsert_properties command without any pre-configured scope.",
+          "type": "string",
+          "enum": [
+            "deny-model-node-upsert-properties"
+          ]
+        },
+        {
+          "description": "allow-remove-branch -> Enables the remove_branch command without any pre-configured scope.",
+          "type": "string",
+          "enum": [
+            "allow-remove-branch"
+          ]
+        },
+        {
+          "description": "deny-remove-branch -> Denies the remove_branch command without any pre-configured scope.",
+          "type": "string",
+          "enum": [
+            "deny-remove-branch"
+          ]
+        },
+        {
+          "description": "allow-remove-branch-properties -> Enables the remove_branch_properties command without any pre-configured scope.",
+          "type": "string",
+          "enum": [
+            "allow-remove-branch-properties"
+          ]
+        },
+        {
+          "description": "deny-remove-branch-properties -> Denies the remove_branch_properties command without any pre-configured scope.",
+          "type": "string",
+          "enum": [
+            "deny-remove-branch-properties"
+          ]
+        },
+        {
+          "description": "allow-rename-branch -> Enables the rename_branch command without any pre-configured scope.",
+          "type": "string",
+          "enum": [
+            "allow-rename-branch"
+          ]
+        },
+        {
+          "description": "deny-rename-branch -> Denies the rename_branch command without any pre-configured scope.",
+          "type": "string",
+          "enum": [
+            "deny-rename-branch"
+          ]
+        },
+        {
+          "description": "allow-save-updates -> Enables the save_updates command without any pre-configured scope.",
+          "type": "string",
+          "enum": [
+            "allow-save-updates"
+          ]
+        },
+        {
+          "description": "deny-save-updates -> Denies the save_updates command without any pre-configured scope.",
+          "type": "string",
+          "enum": [
+            "deny-save-updates"
+          ]
+        },
+        {
+          "description": "allow-set-test-model -> Enables the set_test_model command without any pre-configured scope.",
+          "type": "string",
+          "enum": [
+            "allow-set-test-model"
+          ]
+        },
+        {
+          "description": "deny-set-test-model -> Denies the set_test_model command without any pre-configured scope.",
+          "type": "string",
+          "enum": [
+            "deny-set-test-model"
+          ]
+        },
+        {
+          "description": "allow-unload-model -> Enables the unload_model command without any pre-configured scope.",
+          "type": "string",
+          "enum": [
+            "allow-unload-model"
+          ]
+        },
+        {
+          "description": "deny-unload-model -> Denies the unload_model command without any pre-configured scope.",
+          "type": "string",
+          "enum": [
+            "deny-unload-model"
+          ]
+        },
+        {
+          "description": "allow-upsert-branch-properties -> Enables the upsert_branch_properties command without any pre-configured scope.",
+          "type": "string",
+          "enum": [
+            "allow-upsert-branch-properties"
+          ]
+        },
+        {
+          "description": "deny-upsert-branch-properties -> Denies the upsert_branch_properties command without any pre-configured scope.",
+          "type": "string",
+          "enum": [
+            "deny-upsert-branch-properties"
+          ]
+        },
+        {
+          "description": "allow-viewport-create -> Enables the viewport_create command without any pre-configured scope.",
+          "type": "string",
+          "enum": [
+            "allow-viewport-create"
+          ]
+        },
+        {
+          "description": "deny-viewport-create -> Denies the viewport_create command without any pre-configured scope.",
+          "type": "string",
+          "enum": [
+            "deny-viewport-create"
+          ]
+        },
+        {
+          "description": "allow-viewport-item-remove -> Enables the viewport_item_remove command without any pre-configured scope.",
+          "type": "string",
+          "enum": [
+            "allow-viewport-item-remove"
+          ]
+        },
+        {
+          "description": "deny-viewport-item-remove -> Denies the viewport_item_remove command without any pre-configured scope.",
+          "type": "string",
+          "enum": [
+            "deny-viewport-item-remove"
+          ]
+        },
+        {
+          "description": "allow-viewport-item-remove-properties -> Enables the viewport_item_remove_properties command without any pre-configured scope.",
+          "type": "string",
+          "enum": [
+            "allow-viewport-item-remove-properties"
+          ]
+        },
+        {
+          "description": "deny-viewport-item-remove-properties -> Denies the viewport_item_remove_properties command without any pre-configured scope.",
+          "type": "string",
+          "enum": [
+            "deny-viewport-item-remove-properties"
+          ]
+        },
+        {
+          "description": "allow-viewport-item-replace-properties -> Enables the viewport_item_replace_properties command without any pre-configured scope.",
+          "type": "string",
+          "enum": [
+            "allow-viewport-item-replace-properties"
+          ]
+        },
+        {
+          "description": "deny-viewport-item-replace-properties -> Denies the viewport_item_replace_properties command without any pre-configured scope.",
+          "type": "string",
+          "enum": [
+            "deny-viewport-item-replace-properties"
+          ]
+        },
+        {
+          "description": "allow-viewport-item-upsert-properties -> Enables the viewport_item_upsert_properties command without any pre-configured scope.",
+          "type": "string",
+          "enum": [
+            "allow-viewport-item-upsert-properties"
+          ]
+        },
+        {
+          "description": "deny-viewport-item-upsert-properties -> Denies the viewport_item_upsert_properties command without any pre-configured scope.",
+          "type": "string",
+          "enum": [
+            "deny-viewport-item-upsert-properties"
+          ]
+        },
+        {
+          "description": "allow-viewport-remove -> Enables the viewport_remove command without any pre-configured scope.",
+          "type": "string",
+          "enum": [
+            "allow-viewport-remove"
+          ]
+        },
+        {
+          "description": "deny-viewport-remove -> Denies the viewport_remove command without any pre-configured scope.",
+          "type": "string",
+          "enum": [
+            "deny-viewport-remove"
+          ]
+        },
+        {
+          "description": "allow-viewport-remove-properties -> Enables the viewport_remove_properties command without any pre-configured scope.",
+          "type": "string",
+          "enum": [
+            "allow-viewport-remove-properties"
+          ]
+        },
+        {
+          "description": "deny-viewport-remove-properties -> Denies the viewport_remove_properties command without any pre-configured scope.",
+          "type": "string",
+          "enum": [
+            "deny-viewport-remove-properties"
+          ]
+        },
+        {
+          "description": "allow-viewport-replace-properties -> Enables the viewport_replace_properties command without any pre-configured scope.",
+          "type": "string",
+          "enum": [
+            "allow-viewport-replace-properties"
+          ]
+        },
+        {
+          "description": "deny-viewport-replace-properties -> Denies the viewport_replace_properties command without any pre-configured scope.",
+          "type": "string",
+          "enum": [
+            "deny-viewport-replace-properties"
+          ]
+        },
+        {
+          "description": "allow-viewport-upsert-properties -> Enables the viewport_upsert_properties command without any pre-configured scope.",
+          "type": "string",
+          "enum": [
+            "allow-viewport-upsert-properties"
+          ]
+        },
+        {
+          "description": "deny-viewport-upsert-properties -> Denies the viewport_upsert_properties command without any pre-configured scope.",
+          "type": "string",
+          "enum": [
+            "deny-viewport-upsert-properties"
+          ]
+        },
+        {
+          "description": "default -> Allows CloudCAD editor to access the CloudCAD API",
+          "type": "string",
+          "enum": [
+            "default"
+          ]
+        }
+      ]
+    }
+  }
+}

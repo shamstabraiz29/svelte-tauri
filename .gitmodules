@@ -1,0 +1,6 @@
+[submodule "common"]
+	path = common
+	url = git@github.com:cloudcad/common-shared.git
+[submodule "ui"]
+	path = frontend/ui 
+	url = git@github.com:cloudcad/svelte-ui-v2.git

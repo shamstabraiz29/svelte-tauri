@@ -1,0 +1,13 @@
+# Automatically generated - DO NOT EDIT!
+
+"$schema" = "../../schemas/schema.json"
+
+[[permission]]
+identifier = "allow-mfa-setup"
+description = "Enables the mfa_setup command without any pre-configured scope."
+commands.allow = ["mfa_setup"]
+
+[[permission]]
+identifier = "deny-mfa-setup"
+description = "Denies the mfa_setup command without any pre-configured scope."
+commands.deny = ["mfa_setup"]

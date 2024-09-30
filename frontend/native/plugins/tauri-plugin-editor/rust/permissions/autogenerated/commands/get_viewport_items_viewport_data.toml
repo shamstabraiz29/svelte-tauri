@@ -1,0 +1,13 @@
+# Automatically generated - DO NOT EDIT!
+
+"$schema" = "../../schemas/schema.json"
+
+[[permission]]
+identifier = "allow-get-viewport-items-viewport-data"
+description = "Enables the get_viewport_items_viewport_data command without any pre-configured scope."
+commands.allow = ["get_viewport_items_viewport_data"]
+
+[[permission]]
+identifier = "deny-get-viewport-items-viewport-data"
+description = "Denies the get_viewport_items_viewport_data command without any pre-configured scope."
+commands.deny = ["get_viewport_items_viewport_data"]

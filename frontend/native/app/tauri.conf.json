@@ -1,0 +1,95 @@
+{
+    "productName": "CloudCAD",
+    "version": "0.2.0",
+    "app": {
+        "security": {
+            "csp": null
+        },
+        "windows": [
+            {
+                "fullscreen": false,
+                "height": 600,
+                "label": "main",
+                "minHeight": 600,
+                "minWidth": 800,
+                "resizable": true,
+                "title": "CloudCAD",
+                "visible": true,
+                "width": 800
+            }
+        ]
+    },
+    "build": {
+        "beforeBuildCommand": "cd ../ui && pnpm build",
+        "beforeDevCommand": "cd ../ui && pnpm dev:webview",
+        "devUrl": "http://localhost:1420",
+        "frontendDist": "../../ui/webview/build"
+    },
+    "bundle": {
+        "active": true,
+        "category": "DeveloperTool",
+        "copyright": "CloudCAD, LLC",
+        "icon": [
+            "icons/32x32.png",
+            "icons/128x128.png",
+            "icons/128x128@2x.png",
+            "icons/icon.icns",
+            "icons/icon.ico"
+        ],
+        "targets": "all"
+    },
+    "identifier": "io.cloudcad.ui.dev",
+    "plugins": {
+        "cognito-login": {
+            "clientId": "7o1279daisq3as2dmeuaj36d95",
+            "region": "us-east-2",
+            "userPoolId": "us-east-2_RozRD8WOx"
+        },
+        "cognito-sign-up": {
+            "clientId": "7o1279daisq3as2dmeuaj36d95",
+            "region": "us-east-2"
+        },
+        "subscriber-client": {
+            "url": "https://alpha.api.cloudcad.io",
+            "apiPath": "/subscriber/get"
+        },
+        "account-client": {
+            "url": "https://alpha.api.cloudcad.io",
+            "apiPaths": {
+                "acct_add_path": "/account/add",
+                "acct_get_path": "/account/get",
+                "acct_disable_path": "/account/disable",
+                "acct_add_sub_path": "/account/subscriber/add",
+                "acct_remove_sub_path": "/account/subscriber/remove",
+                "acct_create_folder_path": "/account/folder/create",
+                "acct_modify_folder_path": "/account/folder/modify",
+                "acct_create_repo_path": "/account/repo/create",
+                "acct_modify_repo_path": "/account/repo/modify"
+            }
+        },
+        "editor": {
+            "url": "https://alpha.api.cloudcad.io",
+            "apiPaths": {
+                "cloud_patterns_get_path": "/editor/cloud-patterns/get",
+                "cloud_pattern_get_script_path": "/editor/cloud-pattern/get/script",
+                "branch_get_path": "/editor/branch/get",
+                "branch_model_modify_path": "/editor/branch/model/modify",
+                "viewport_create_path": "/editor/branch/viewport/create",
+                "nodes_type_info_get_path": "/editor/nodes-type-info/get",
+                "wasm_components_code_get_path": "/editor/wasm-components-code/get",
+                "resource_items_viewport_data_get_path": "/editor/resource-items/viewport-data/get",
+                "resource_items_schemas_get_path": "/editor/resource-items/schemas/get",
+                "resource_items_partials_get_path": "/editor/resource-items/partials/get"
+            }
+        },
+        "repo-client": {
+            "url": "https://alpha.api.cloudcad.io",
+            "apiPaths": {
+                "repo_get_path": "/repo/get",
+                "repo_branch_create_path": "/repo/branch/create",
+                "repo_branch_modify_path": "/repo/branch/modify",
+                "repo_get_branches_commit_history_path": "/repo/get-branches-commit-history"
+            }
+        }
+    }
+}

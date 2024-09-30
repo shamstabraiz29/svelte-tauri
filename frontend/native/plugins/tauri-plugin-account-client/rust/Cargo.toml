@@ -1,0 +1,39 @@
+[package]
+description = "Tauri plugin for CloudCAD account client"
+name = "tauri-plugin-account-client"
+# exclude = ["/examples", "/webview-dist", "/webview-src", "/node_modules"]
+authors.workspace = true 
+edition.workspace = true 
+license.workspace = true 
+links = "tauri-plugin-account-client" # This is needed so the plugin does not accidentally linked in twice
+publish.workspace = true 
+rust-version.workspace = true 
+version.workspace = true 
+
+[package.metadata]
+bindings_base_path = "frontend/ui/tauri-plugin-apis"
+
+[dependencies]
+anyhow.workspace = true
+json-patch.workspace = true
+log.workspace = true
+simple_logger.workspace = true
+
+serde.workspace = true
+serde_json.workspace = true
+specta-typescript.workspace = true
+specta-util.workspace = true
+specta.workspace = true
+tauri-plugin.workspace = true
+tauri-specta.workspace = true
+tauri.workspace = true
+thiserror.workspace = true
+
+common-dtos.workspace = true
+common-libs-account-api-client.workspace = true
+common-simple-types.workspace = true
+frontend-tauri-plugins-common.workspace = true
+
+[build-dependencies]
+serde_json.workspace = true
+tauri-plugin = {workspace = true, features = ["build"]}

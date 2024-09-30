@@ -1,0 +1,20 @@
+{
+    "compilerOptions": {
+        "target": "ES6",
+        "strict": true,
+        "allowJs": true,
+        "esModuleInterop": true,
+        "baseUrl": ".",
+        "module": "esnext",
+        "moduleResolution": "bundler",
+        "paths": {
+            "types": ["@types"],
+            "@tauri-apps/api/core": ["node_modules/@tauri-apps/api/core"]
+        },
+        "declaration": true,
+        "declarationDir": "./dist/",
+        "rootDir": "./bindings"
+    },
+    "include": ["./"],
+    "exclude": ["**/rollup.config.mjs", "./dist", "node_modules"]
+}

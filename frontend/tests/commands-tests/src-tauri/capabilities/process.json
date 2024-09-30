@@ -1,0 +1,8 @@
+{
+    "identifier": "process",
+    "description": "permissions to the process plugin",
+    "context": "local",
+    "windows": ["main"],
+    "permissions": ["process:allow-exit"],
+    "platforms": ["linux", "macOS", "windows", "android", "iOS"]
+}

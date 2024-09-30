@@ -1,0 +1,11 @@
+"$schema" = "schemas/schema.json"
+[default]
+description = "Allows Cognito based login/logout requests"
+permissions = [
+  "allow-logout",
+  "allow-mfa-login",
+  "allow-mfa-setup",
+  "allow-pw-login",
+  "allow-refresh-login",
+  "allow-store-refresh-token",
+]

@@ -1,0 +1,19 @@
+"$schema" = "schemas/schema.json"
+[default]
+description = "Allows CloudCAD accounts to access the CloudCAD API"
+permissions = [
+  "allow-create-folder",
+  "allow-create-repo",
+  "allow-get-account-summary",
+  "allow-set-account",
+  "allow-rename-folder",
+  "allow-move-folder",
+  "allow-remove-folder",
+  "allow-remove-folder-properties",
+  "allow-upsert-folder-properties",
+  "allow-rename-repo",
+  "allow-move-repo",
+  "allow-archive-repo",
+  "allow-remove-repo-properties",
+  "allow-upsert-repo-properties",
+]

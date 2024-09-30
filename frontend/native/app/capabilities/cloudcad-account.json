@@ -1,0 +1,18 @@
+{
+    "identifier": "account-client-plugin",
+    "description": "permissions to the account client plugin",
+    "context": "local",
+    "windows": [
+        "main"
+    ],
+    "permissions": [
+        "account-client:default"
+    ],
+    "platforms": [
+        "linux",
+        "macOS",
+        "windows",
+        "android",
+        "iOS"
+    ]
+}

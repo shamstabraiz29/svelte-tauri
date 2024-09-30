@@ -1,0 +1,29 @@
+[package]
+authors.workspace = true
+edition.workspace = true
+license.workspace = true
+name = "frontend-tauri-plugins-common"
+publish.workspace = true
+rust-version.workspace = true
+version.workspace = true
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+anyhow.workspace = true
+simple_logger.workspace = true
+specta-typescript.workspace = true
+specta.workspace = true
+
+json-patch.workspace = true
+log.workspace = true
+serde.workspace = true
+serde_json.workspace = true
+specta-util.workspace = true
+tauri-specta.workspace = true
+tauri.workspace = true
+verified_token.workspace = true
+zeroize.workspace = true
+
+common-dtos.workspace = true
+common-simple-types.workspace = true

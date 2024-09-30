@@ -1,0 +1,13 @@
+# Automatically generated - DO NOT EDIT!
+
+"$schema" = "../../schemas/schema.json"
+
+[[permission]]
+identifier = "allow-store-refresh-token"
+description = "Enables the store_refresh_token command without any pre-configured scope."
+commands.allow = ["store_refresh_token"]
+
+[[permission]]
+identifier = "deny-store-refresh-token"
+description = "Denies the store_refresh_token command without any pre-configured scope."
+commands.deny = ["store_refresh_token"]

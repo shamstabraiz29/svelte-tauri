@@ -1,0 +1,23 @@
+[Log] viewportItems001 (InfraEditor.svelte, line 422)
+Array (19)
+0 {meta: Object, staticData: Object, partials: {type: "GetResourceItemPartialsResponse", reqId: "editor-uxx5hem6phicnb8fjulopr", partials: {label: "{{nodeData.tags.[name]}}"}}, schema: null}
+1 {meta: Object, staticData: Object, partials: {type: "GetResourceItemPartialsResponse", reqId: "editor-mdt95jrpvdn05hywupb0mvi", partials: {label: "{{nodeData.tags.[name]}}"}}, schema: null}
+2 {meta: Object, staticData: Object, partials: {type: "GetResourceItemPartialsResponse", reqId: "editor-pmt44azq2kkfudh1z80f9e", partials: {label: "{{nodeData.tags.[name]}}"}}, schema: Object}
+3 {meta: Object, staticData: Object, partials: {type: "GetResourceItemPartialsResponse", reqId: "editor-5cxo1xfwq0sq43d1y16sw", partials: {label: "{{nodeData.tags.[name]}}"}}, schema: null}
+4 {meta: Object, staticData: Object, partials: {type: "GetResourceItemPartialsResponse", reqId: "editor-5qab5530o5j4mp9url9qga", partials: {label: "{{nodeData.tags.[name]}}"}}, schema: null}
+5 {meta: Object, staticData: Object, partials: {type: "GetResourceItemPartialsResponse", reqId: "editor-rqoeiqwu9qhz0yk6zil7he", partials: {label: "{{nodeData.tags.[name]}}"}}, schema: Object}
+6 {meta: Object, staticData: Object, partials: {type: "GetResourceItemPartialsResponse", reqId: "editor-uzaan4womi7icrpp1kd6j", partials: {label: "{{nodeData.tags.[name]}}"}}, schema: Object}
+7 {meta: Object, staticData: null, partials: {type: "GetResourceItemPartialsResponse", reqId: "editor-7q3sx31bv6awfeh888kk1i", partials: {label: "{{nodeData.tags.[name]}}"}}, schema: null}
+8 {meta: Object, staticData: null, partials: {type: "GetResourceItemPartialsResponse", reqId: "editor-5ns2yxh2vi4ey21ak94rml", partials: {label: "{{nodeData.tags.[name]}}"}}, schema: null}
+9 {meta: Object, staticData: Object, partials: {type: "GetResourceItemPartialsResponse", reqId: "editor-ilcblc1qlyfpq9e0ju4ded", partials: {label: "{{nodeData.tags.[name]}}"}}, schema: Object}
+10 {meta: Object, staticData: null, partials: {type: "GetResourceItemPartialsResponse", reqId: "editor-ykm6i7ajwievrtcf0xujj", partials: {label: "{{nodeData.tags.[name]}}"}}, schema: null}
+11 {meta: Object, staticData: Object, partials: {type: "GetResourceItemPartialsResponse", reqId: "editor-od1vyb68jggs5rf1ozrvum", partials: {label: "{{nodeData.tags.[name]}}"}}, schema: Object}
+12 {meta: Object, staticData: Object, partials: {type: "GetResourceItemPartialsResponse", reqId: "editor-dq8g46ax9i2uy44pc4w8x", partials: {label: "{{nodeData.tags.[name]}}"}}, schema: Object}
+13 {meta: Object, staticData: Object, partials: {type: "GetResourceItemPartialsResponse", reqId: "editor-reprtyyp4okj0udwunlk4r", partials: {label: "{{nodeData.tags.[name]}}"}}, schema: null}
+14 {meta: Object, staticData: Object, partials: {type: "GetResourceItemPartialsResponse", reqId: "editor-j01q55etmz5wm7dyj0qjn", partials: {label: "{{nodeData.tags.[name]}}"}}, schema: Object}
+15 {meta: Object, staticData: Object, partials: {type: "GetResourceItemPartialsResponse", reqId: "editor-8g5okrrcxpdumhprqv8wa", partials: {label: "{{nodeData.tags.[name]}}"}}, schema: null}
+16 {meta: Object, staticData: Object, partials: {type: "GetResourceItemPartialsResponse", reqId: "editor-bkzg57p4nzo0hgt0gt69zf", partials: {label: "{{nodeData.tags.[name]}}"}}, schema: Object}
+17 {meta: Object, staticData: Object, partials: {type: "GetResourceItemPartialsResponse", reqId: "editor-d45aspb7tlgr7dly9ujwmm", partials: {label: "{{nodeData.tags.[name]}}"}}, schema: Object}
+18 {meta: Object, staticData: null, partials: {type: "GetResourceItemPartialsResponse", reqId: "editor-tr5joh7cvfww0225v0v7g", partials: {label: "{{nodeData.tags.[name]}}"}}, schema: null}
+
+Array Prototype

@@ -1,0 +1,18 @@
+{
+    "identifier": "signup-plugin",
+    "description": "permissions to the signup plugin",
+    "context": "local",
+    "windows": [
+        "main"
+    ],
+    "permissions": [
+        "cognito-sign-up:default"
+    ],
+    "platforms": [
+        "linux",
+        "macOS",
+        "windows",
+        "android",
+        "iOS"
+    ]
+}

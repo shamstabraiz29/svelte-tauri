@@ -1,0 +1,13 @@
+# Automatically generated - DO NOT EDIT!
+
+"$schema" = "../../schemas/schema.json"
+
+[[permission]]
+identifier = "allow-resend-confirmation"
+description = "Enables the resend_confirmation command without any pre-configured scope."
+commands.allow = ["resend_confirmation"]
+
+[[permission]]
+identifier = "deny-resend-confirmation"
+description = "Denies the resend_confirmation command without any pre-configured scope."
+commands.deny = ["resend_confirmation"]

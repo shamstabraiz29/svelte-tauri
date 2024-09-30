@@ -1,0 +1,13 @@
+# Automatically generated - DO NOT EDIT!
+
+"$schema" = "../../schemas/schema.json"
+
+[[permission]]
+identifier = "allow-create-repo"
+description = "Enables the create_repo command without any pre-configured scope."
+commands.allow = ["create_repo"]
+
+[[permission]]
+identifier = "deny-create-repo"
+description = "Denies the create_repo command without any pre-configured scope."
+commands.deny = ["create_repo"]

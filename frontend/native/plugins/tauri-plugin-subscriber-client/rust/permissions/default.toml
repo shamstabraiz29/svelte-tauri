@@ -1,0 +1,4 @@
+"$schema" = "schemas/schema.json"
+[default]
+description = "Allows CloudCAD subscribers to access the CloudCAD API"
+permissions = ["allow-get-subscriber"]

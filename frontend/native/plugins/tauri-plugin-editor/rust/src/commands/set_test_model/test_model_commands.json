@@ -1,0 +1,1280 @@
+[
+    {
+        "Node": {
+            "Create": {
+                "branch_id": "{branch_id}",
+                "node_id": "<partition_id: generate_ag_id>",
+                "node_type": "aws_partition",
+                "labels": [
+                    "AWS",
+                    "Partition",
+                    "{partition_id}",
+                    "aws_partition"
+                ],
+                "properties": {
+                    "partition_type": "aws",
+                    "tags": {
+                        "name": "Test AWS Partition"
+                    }
+                }
+            }
+        }
+    },
+    {
+        "ViewportItem": {
+            "Create": {
+                "branch_id": "{branch_id}",
+                "viewport_item_id": "<partition_viewport_item_id: generate_ag_id>",
+                "model_item_id": "{partition_id}",
+                "model_item_type": "aws_partition",
+                "viewport_id": "{viewport_id}",
+                "properties": {
+                    "position": {
+                        "x": 0,
+                        "y": 0
+                    },
+                    "width": 676,
+                    "height": 573
+                }
+            }
+        }
+    },
+    {
+        "Node": {
+            "Create": {
+                "branch_id": "{branch_id}",
+                "node_id": "<account_id: generate_ag_id>",
+                "node_type": "aws_account",
+                "labels": ["AWS", "Account", "{account_id}", "aws_account"],
+                "properties": {
+                    "label": "234567854567",
+                    "tags": {
+                        "name": "CloudCAD Test Account"
+                    }
+                }
+            }
+        }
+    },
+    {
+        "ViewportItem": {
+            "Create": {
+                "branch_id": "{branch_id}",
+                "viewport_item_id": "<account_viewport_item_id: generate_ag_id>",
+                "model_item_id": "{account_id}",
+                "model_item_type": "aws_account",
+                "viewport_id": "{viewport_id}",
+                "properties": {
+                    "position": {
+                        "x": 17,
+                        "y": 16
+                    },
+                    "width": 644,
+                    "height": 540,
+                    "parentId": "{partition_viewport_item_id}"
+                }
+            }
+        }
+    },
+    {
+        "Node": {
+            "Create": {
+                "branch_id": "{branch_id}",
+                "node_id": "<region_id: generate_ag_id>",
+                "node_type": "aws_region",
+                "labels": ["AWS", "Region", "{region_id}", "aws_region"],
+                "properties": {
+                    "label": "Ohio"
+                }
+            }
+        }
+    },
+    {
+        "ViewportItem": {
+            "Create": {
+                "branch_id": "{branch_id}",
+                "viewport_item_id": "<region_viewport_item_id: generate_ag_id>",
+                "model_item_id": "{region_id}",
+                "model_item_type": "aws_region",
+                "viewport_id": "{viewport_id}",
+                "properties": {
+                    "position": {
+                        "x": 22,
+                        "y": 19
+                    },
+                    "width": 603,
+                    "height": 501,
+                    "parentId": "{account_viewport_item_id}"
+                }
+            }
+        }
+    },
+    {
+        "Node": {
+            "Create": {
+                "branch_id": "{branch_id}",
+                "node_id": "<vpc_id: generate_ag_id>",
+                "node_type": "aws_ec2_vpc",
+                "labels": ["AWS", "EC2", "VPC", "{vpc_id}", "aws_ec2_vpc"],
+                "properties": {
+                    "cidr_block": "10.0.0.0/16",
+                    "enable_dns_hostnames": true,
+                    "enable_dns_support": true,
+                    "instance_tenancy": "default",
+                    "ipv4_netmask_length": 16,
+                    "tags": {
+                        "name": "Test VPC"
+                    }
+                }
+            }
+        }
+    },
+    {
+        "ViewportItem": {
+            "Create": {
+                "branch_id": "{branch_id}",
+                "viewport_item_id": "<vpc_viewport_item_id: generate_ag_id>",
+                "model_item_id": "{vpc_id}",
+                "model_item_type": "aws_ec2_vpc",
+                "viewport_id": "{viewport_id}",
+                "properties": {
+                    "position": {
+                        "x": 8,
+                        "y": 23
+                    },
+                    "width": 580,
+                    "height": 459,
+                    "parentId": "{region_viewport_item_id}"
+                }
+            }
+        }
+    },
+    {
+        "Node": {
+            "Create": {
+                "branch_id": "{branch_id}",
+                "node_id": "<igw_id: generate_ag_id>",
+                "node_type": "aws_ec2_internet_gateway",
+                "labels": [
+                    "AWS",
+                    "EC2",
+                    "InternetGateway",
+                    "{igw_id}",
+                    "aws_ec2_internet_gateway"
+                ],
+                "properties": {
+                    "tags": {
+                        "name": "Test IGW"
+                    }
+                }
+            }
+        }
+    },
+    {
+        "ViewportItem": {
+            "Create": {
+                "branch_id": "{branch_id}",
+                "viewport_item_id": "<igw_viewport_item_id: generate_ag_id>",
+                "model_item_id": "{igw_id}",
+                "model_item_type": "aws_ec2_internet_gateway",
+                "viewport_id": "{viewport_id}",
+                "properties": {
+                    "position": {
+                        "edge": "top",
+                        "offset": 25
+                    },
+                    "parentId": "{vpc_viewport_item_id}"
+                }
+            }
+        }
+    },
+    {
+        "Node": {
+            "Create": {
+                "branch_id": "{branch_id}",
+                "node_id": "<az_1_id: generate_ag_id>",
+                "node_type": "aws_availability_zone",
+                "labels": [
+                    "AWS",
+                    "AvailabilityZone",
+                    "{az_1_id}",
+                    "aws_availability_zone"
+                ],
+                "properties": {
+                    "label": "Ohio",
+                    "id": "us-east-2a"
+                }
+            }
+        }
+    },
+    {
+        "ViewportItem": {
+            "Create": {
+                "branch_id": "{branch_id}",
+                "viewport_item_id": "<az_1_viewport_item_id: generate_ag_id>",
+                "model_item_id": "{az_1_id}",
+                "model_item_type": "aws_availability_zone",
+                "viewport_id": "{viewport_id}",
+                "properties": {
+                    "position": {
+                        "x": 19,
+                        "y": 26
+                    },
+                    "width": 527,
+                    "height": 168,
+                    "parentId": "{vpc_viewport_item_id}"
+                }
+            }
+        }
+    },
+    {
+        "Node": {
+            "Create": {
+                "branch_id": "{branch_id}",
+                "node_id": "<az_1_pub_rt_id: generate_ag_id>",
+                "node_type": "aws_ec2_route_table",
+                "labels": [
+                    "AWS",
+                    "EC2",
+                    "RouteTable",
+                    "{az_1_pub_rt_id}",
+                    "aws_ec2_route_table"
+                ],
+                "properties": {
+                    "tags": {
+                        "name": "AZ1 Public Route Table"
+                    }
+                }
+            }
+        }
+    },
+    {
+        "Node": {
+            "Create": {
+                "branch_id": "{branch_id}",
+                "node_id": "<pub_sub_1_id: generate_ag_id>",
+                "node_type": "aws_ec2_public_subnet",
+                "labels": [
+                    "AWS",
+                    "EC2",
+                    "Subnet",
+                    "{pub_sub_1_id}",
+                    "aws_ec2_public_subnet"
+                ],
+                "properties": {
+                    "cidr_block": "10.0.16.0/20",
+                    "tags": {
+                        "name": "Public Subnet 1"
+                    }
+                }
+            }
+        }
+    },
+    {
+        "ViewportItem": {
+            "Create": {
+                "branch_id": "{branch_id}",
+                "viewport_item_id": "<pub_sub_1_viewport_item_id: generate_ag_id>",
+                "model_item_id": "{pub_sub_1_id}",
+                "model_item_type": "aws_ec2_public_subnet",
+                "viewport_id": "{viewport_id}",
+                "properties": {
+                    "position": {
+                        "x": 23,
+                        "y": 8
+                    },
+                    "width": 119,
+                    "height": 149,
+                    "parentId": "{az_1_viewport_item_id}"
+                }
+            }
+        }
+    },
+    {
+        "Node": {
+            "Create": {
+                "branch_id": "{branch_id}",
+                "node_id": "<nat_1_id: generate_ag_id>",
+                "node_type": "aws_ec2_nat_gateway",
+                "labels": [
+                    "AWS",
+                    "EC2",
+                    "NATGateway",
+                    "{nat_1_id}",
+                    "aws_ec2_nat_gateway"
+                ],
+                "properties": {
+                    "connectivity_type": "public",
+                    "tags": {
+                        "name": "NAT Gateway 1"
+                    }
+                }
+            }
+        }
+    },
+    {
+        "ViewportItem": {
+            "Create": {
+                "branch_id": "{branch_id}",
+                "viewport_item_id": "<nat_1_viewport_item_id: generate_ag_id>",
+                "model_item_id": "{nat_1_id}",
+                "model_item_type": "aws_ec2_nat_gateway",
+                "viewport_id": "{viewport_id}",
+                "properties": {
+                    "position": {
+                        "x": 8,
+                        "y": 49
+                    },
+                    "parentId": "{pub_sub_1_viewport_item_id}"
+                }
+            }
+        }
+    },
+    {
+        "Node": {
+            "Create": {
+                "branch_id": "{branch_id}",
+                "node_id": "<priv_sub_1_id: generate_ag_id>",
+                "node_type": "aws_ec2_private_subnet",
+                "labels": [
+                    "AWS",
+                    "EC2",
+                    "Subnet",
+                    "{priv_sub_1_id}",
+                    "aws_ec2_private_subnet"
+                ],
+                "properties": {
+                    "cidr_block": "10.0.32.0/20",
+                    "tags": {
+                        "name": "Private Subnet 1"
+                    }
+                }
+            }
+        }
+    },
+    {
+        "ViewportItem": {
+            "Create": {
+                "branch_id": "{branch_id}",
+                "viewport_item_id": "<priv_sub_1_viewport_item_id: generate_ag_id>",
+                "model_item_id": "{priv_sub_1_id}",
+                "model_item_type": "aws_ec2_private_subnet",
+                "viewport_id": "{viewport_id}",
+                "properties": {
+                    "position": {
+                        "x": 351,
+                        "y": 8
+                    },
+                    "width": 118,
+                    "height": 145,
+                    "parentId": "{az_1_viewport_item_id}"
+                }
+            }
+        }
+    },
+    {
+        "Node": {
+            "Create": {
+                "branch_id": "{branch_id}",
+                "node_id": "<az_1_priv_rt_id: generate_ag_id>",
+                "node_type": "aws_ec2_route_table",
+                "labels": [
+                    "AWS",
+                    "EC2",
+                    "RouteTable",
+                    "{az_1_priv_rt_id}",
+                    "aws_ec2_route_table"
+                ],
+                "properties": {
+                    "tags": {
+                        "name": "AZ1 Private Route Table"
+                    }
+                }
+            }
+        }
+    },
+    {
+        "Node": {
+            "Create": {
+                "branch_id": "{branch_id}",
+                "node_id": "<az_2_id: generate_ag_id>",
+                "node_type": "aws_availability_zone",
+                "labels": [
+                    "AWS",
+                    "AvailabilityZone",
+                    "{az_2_id}",
+                    "aws_availability_zone"
+                ],
+                "properties": {
+                    "label": "Availability Zone 2",
+                    "id": "us-west-2b"
+                }
+            }
+        }
+    },
+    {
+        "ViewportItem": {
+            "Create": {
+                "branch_id": "{branch_id}",
+                "viewport_item_id": "<az_2_viewport_item_id: generate_ag_id>",
+                "model_item_id": "{az_2_id}",
+                "model_item_type": "aws_availability_zone",
+                "viewport_id": "{viewport_id}",
+                "properties": {
+                    "position": {
+                        "x": 19,
+                        "y": 242
+                    },
+                    "width": 530,
+                    "height": 166,
+                    "parentId": "{vpc_viewport_item_id}"
+                }
+            }
+        }
+    },
+    {
+        "Node": {
+            "Create": {
+                "branch_id": "{branch_id}",
+                "node_id": "<az_2_pub_rt_id: generate_ag_id>",
+                "node_type": "aws_ec2_route_table",
+                "labels": [
+                    "AWS",
+                    "EC2",
+                    "RouteTable",
+                    "{az_2_pub_rt_id}",
+                    "aws_ec2_route_table"
+                ],
+                "properties": {
+                    "tags": {
+                        "name": "AZ2 Public Route Table"
+                    }
+                }
+            }
+        }
+    },
+    {
+        "Node": {
+            "Create": {
+                "branch_id": "{branch_id}",
+                "node_id": "<pub_sub_2_id: generate_ag_id>",
+                "node_type": "aws_ec2_public_subnet",
+                "labels": [
+                    "AWS",
+                    "EC2",
+                    "Subnet",
+                    "{pub_sub_2_id}",
+                    "aws_ec2_public_subnet"
+                ],
+                "properties": {
+                    "cidr_block": "10.0.16.0/20",
+                    "tags": {
+                        "name": "Public Subnet 2"
+                    }
+                }
+            }
+        }
+    },
+    {
+        "ViewportItem": {
+            "Create": {
+                "branch_id": "{branch_id}",
+                "viewport_item_id": "<pub_sub_2_viewport_item_id: generate_ag_id>",
+                "model_item_id": "{pub_sub_2_id}",
+                "model_item_type": "aws_ec2_public_subnet",
+                "viewport_id": "{viewport_id}",
+                "properties": {
+                    "position": {
+                        "x": 23,
+                        "y": 11
+                    },
+                    "width": 119,
+                    "height": 146,
+                    "parentId": "{az_2_viewport_item_id}"
+                }
+            }
+        }
+    },
+    {
+        "Node": {
+            "Create": {
+                "branch_id": "{branch_id}",
+                "node_id": "<nat_2_id: generate_ag_id>",
+                "node_type": "aws_ec2_nat_gateway",
+                "labels": [
+                    "AWS",
+                    "EC2",
+                    "NATGateway",
+                    "{nat_2_id}",
+                    "aws_ec2_nat_gateway"
+                ],
+                "properties": {
+                    "connectivity_type": "private",
+                    "tags": {
+                        "name": "NAT Gateway 2"
+                    }
+                }
+            }
+        }
+    },
+    {
+        "ViewportItem": {
+            "Create": {
+                "branch_id": "{branch_id}",
+                "viewport_item_id": "<nat_2_viewport_item_id: generate_ag_id>",
+                "model_item_id": "{nat_2_id}",
+                "model_item_type": "aws_ec2_nat_gateway",
+                "viewport_id": "{viewport_id}",
+                "properties": {
+                    "position": {
+                        "x": 8,
+                        "y": 41
+                    },
+                    "parentId": "{pub_sub_2_viewport_item_id}"
+                }
+            }
+        }
+    },
+    {
+        "Node": {
+            "Create": {
+                "branch_id": "{branch_id}",
+                "node_id": "<priv_sub_2_id: generate_ag_id>",
+                "node_type": "aws_ec2_private_subnet",
+                "labels": [
+                    "AWS",
+                    "EC2",
+                    "Subnet",
+                    "{priv_sub_2_id}",
+                    "aws_ec2_private_subnet"
+                ],
+                "properties": {
+                    "cidr_block": "10.0.32.0/20",
+                    "tags": {
+                        "name": "Private Subnet 2"
+                    }
+                }
+            }
+        }
+    },
+    {
+        "ViewportItem": {
+            "Create": {
+                "branch_id": "{branch_id}",
+                "viewport_item_id": "<priv_sub_2_viewport_item_id: generate_ag_id>",
+                "model_item_id": "{priv_sub_2_id}",
+                "model_item_type": "aws_ec2_private_subnet",
+                "viewport_id": "{viewport_id}",
+                "properties": {
+                    "position": {
+                        "x": 351,
+                        "y": 11
+                    },
+                    "width": 119,
+                    "height": 146,
+                    "parentId": "{az_2_viewport_item_id}"
+                }
+            }
+        }
+    },
+    {
+        "Node": {
+            "Create": {
+                "branch_id": "{branch_id}",
+                "node_id": "<az_2_priv_rt_id: generate_ag_id>",
+                "node_type": "aws_ec2_route_table",
+                "labels": [
+                    "AWS",
+                    "EC2",
+                    "RouteTable",
+                    "{az_2_priv_rt_id}",
+                    "aws_ec2_route_table"
+                ],
+                "properties": {
+                    "tags": {
+                        "name": "AZ2 Private Route Table"
+                    }
+                }
+            }
+        }
+    },
+    {
+        "Relationship": {
+            "Create": {
+                "branch_id": "{branch_id}",
+                "rel_id": "<partition_to_model_root: generate_ag_id>",
+                "rel_type": "contained_in",
+                "from": "{partition_id}",
+                "to": "{model_root_node_id}",
+                "labels": ["contained_in"],
+                "properties": {}
+            }
+        }
+    },
+    {
+        "Relationship": {
+            "Create": {
+                "branch_id": "{branch_id}",
+                "rel_id": "<account_to_partition: generate_ag_id>",
+                "rel_type": "in_partition",
+                "from": "{account_id}",
+                "to": "{partition_id}",
+                "labels": ["in_partition"],
+                "properties": {}
+            }
+        }
+    },
+    {
+        "Relationship": {
+            "Create": {
+                "branch_id": "{branch_id}",
+                "rel_id": "<region_to_account: generate_ag_id>",
+                "rel_type": "in_account",
+                "from": "{region_id}",
+                "to": "{account_id}",
+                "labels": ["in_account"],
+                "properties": {}
+            }
+        }
+    },
+    {
+        "Relationship": {
+            "Create": {
+                "branch_id": "{branch_id}",
+                "rel_id": "<vpc_to_region: generate_ag_id>",
+                "rel_type": "in_region",
+                "from": "{vpc_id}",
+                "to": "{region_id}",
+                "labels": ["in_region"],
+                "properties": {}
+            }
+        }
+    },
+    {
+        "Relationship": {
+            "Create": {
+                "branch_id": "{branch_id}",
+                "rel_id": "<igw_to_vpc: generate_ag_id>",
+                "rel_type": "attached_to",
+                "from": "{igw_id}",
+                "to": "{vpc_id}",
+                "labels": ["attached_to"],
+                "properties": {}
+            }
+        }
+    },
+    {
+        "Relationship": {
+            "Create": {
+                "branch_id": "{branch_id}",
+                "rel_id": "<az_1_to_vpc: generate_ag_id>",
+                "rel_type": "in_vpc",
+                "from": "{az_1_id}",
+                "to": "{vpc_id}",
+                "labels": ["in_vpc"],
+                "properties": {}
+            }
+        }
+    },
+    {
+        "Relationship": {
+            "Create": {
+                "branch_id": "{branch_id}",
+                "rel_id": "<az_1_pub_rt_to_vpc: generate_ag_id>",
+                "rel_type": "route_target",
+                "from": "{az_1_pub_rt_id}",
+                "to": "{vpc_id}",
+                "labels": ["route_target"],
+                "properties": {
+                    "source": "0.0.0.0/0",
+                    "destination": "10.0.0.0/16",
+                    "order": 0
+                }
+            }
+        }
+    },
+    {
+        "Relationship": {
+            "Create": {
+                "branch_id": "{branch_id}",
+                "rel_id": "<az_1_pub_rt_to_igw: generate_ag_id>",
+                "rel_type": "route_target",
+                "from": "{az_1_pub_rt_id}",
+                "to": "{igw_id}",
+                "labels": ["route_target"],
+                "properties": {
+                    "source": "0.0.0.0/0",
+                    "destination": "0.0.0.0/0",
+                    "order": 1
+                }
+            }
+        }
+    },
+    {
+        "Relationship": {
+            "Create": {
+                "branch_id": "{branch_id}",
+                "rel_id": "<pub_sub_1_to_az_1: generate_ag_id>",
+                "rel_type": "in_az",
+                "from": "{pub_sub_1_id}",
+                "to": "{az_1_id}",
+                "labels": ["in_az"],
+                "properties": {}
+            }
+        }
+    },
+    {
+        "Relationship": {
+            "Create": {
+                "branch_id": "{branch_id}",
+                "rel_id": "<pub_sub_1_to_az_1_pub_rt: generate_ag_id>",
+                "rel_type": "route_table",
+                "from": "{pub_sub_1_id}",
+                "to": "{az_1_pub_rt_id}",
+                "labels": ["route_table"],
+                "properties": {}
+            }
+        }
+    },
+    {
+        "Relationship": {
+            "Create": {
+                "branch_id": "{branch_id}",
+                "rel_id": "<nat_1_to_pub_sub_1: generate_ag_id>",
+                "rel_type": "in_subnet",
+                "from": "{nat_1_id}",
+                "to": "{pub_sub_1_id}",
+                "labels": ["in_subnet"],
+                "properties": {}
+            }
+        }
+    },
+    {
+        "Relationship": {
+            "Create": {
+                "branch_id": "{branch_id}",
+                "rel_id": "<priv_sub_1_to_az_1: generate_ag_id>",
+                "rel_type": "in_az",
+                "from": "{priv_sub_1_id}",
+                "to": "{az_1_id}",
+                "labels": ["in_az"],
+                "properties": {}
+            }
+        }
+    },
+    {
+        "Relationship": {
+            "Create": {
+                "branch_id": "{branch_id}",
+                "rel_id": "<priv_sub_1_to_az_1_priv_rt: generate_ag_id>",
+                "rel_type": "route_table",
+                "from": "{priv_sub_1_id}",
+                "to": "{az_1_priv_rt_id}",
+                "labels": ["route_table"],
+                "properties": {}
+            }
+        }
+    },
+    {
+        "Relationship": {
+            "Create": {
+                "branch_id": "{branch_id}",
+                "rel_id": "<az_1_priv_rt_to_vpc: generate_ag_id>",
+                "rel_type": "route_target",
+                "from": "{az_1_priv_rt_id}",
+                "to": "{vpc_id}",
+                "labels": ["route_target"],
+                "properties": {
+                    "source": "0.0.0.0/0",
+                    "destination": "10.0.0.0/16",
+                    "order": 0
+                }
+            }
+        }
+    },
+    {
+        "Relationship": {
+            "Create": {
+                "branch_id": "{branch_id}",
+                "rel_id": "<az_1_priv_rt_to_nat_1: generate_ag_id>",
+                "rel_type": "route_target",
+                "from": "{az_1_priv_rt_id}",
+                "to": "{nat_1_id}",
+                "labels": ["route_target"],
+                "properties": {
+                    "source": "0.0.0.0/0",
+                    "destination": "0.0.0.0/0",
+                    "order": 1
+                }
+            }
+        }
+    },
+    {
+        "Relationship": {
+            "Create": {
+                "branch_id": "{branch_id}",
+                "rel_id": "<az_2_to_vpc: generate_ag_id>",
+                "rel_type": "in_vpc",
+                "from": "{az_2_id}",
+                "to": "{vpc_id}",
+                "labels": ["in_vpc"],
+                "properties": {}
+            }
+        }
+    },
+    {
+        "Relationship": {
+            "Create": {
+                "branch_id": "{branch_id}",
+                "rel_id": "<az_2_pub_rt_to_vpc: generate_ag_id>",
+                "rel_type": "route_target",
+                "from": "{az_2_pub_rt_id}",
+                "to": "{vpc_id}",
+                "labels": ["route_target"],
+                "properties": {
+                    "source": "0.0.0.0/0",
+                    "destination": "10.0.0.0/16",
+                    "order": 0
+                }
+            }
+        }
+    },
+    {
+        "Relationship": {
+            "Create": {
+                "branch_id": "{branch_id}",
+                "rel_id": "<az_2_pub_rt_to_igw: generate_ag_id>",
+                "rel_type": "route_target",
+                "from": "{az_2_pub_rt_id}",
+                "to": "{igw_id}",
+                "labels": ["route_target"],
+                "properties": {
+                    "source": "0.0.0.0/0",
+                    "destination": "0.0.0.0/0",
+                    "order": 1
+                }
+            }
+        }
+    },
+    {
+        "Relationship": {
+            "Create": {
+                "branch_id": "{branch_id}",
+                "rel_id": "<pub_sub_2_to_az_2: generate_ag_id>",
+                "rel_type": "in_az",
+                "from": "{pub_sub_2_id}",
+                "to": "{az_2_id}",
+                "labels": ["in_az"],
+                "properties": {}
+            }
+        }
+    },
+    {
+        "Relationship": {
+            "Create": {
+                "branch_id": "{branch_id}",
+                "rel_id": "<pub_sub_2_to_az_2_pub_rt: generate_ag_id>",
+                "rel_type": "route_table",
+                "from": "{pub_sub_2_id}",
+                "to": "{az_2_pub_rt_id}",
+                "labels": ["route_table"],
+                "properties": {}
+            }
+        }
+    },
+    {
+        "Relationship": {
+            "Create": {
+                "branch_id": "{branch_id}",
+                "rel_id": "<nat_2_to_pub_sub_2: generate_ag_id>",
+                "rel_type": "in_subnet",
+                "from": "{nat_2_id}",
+                "to": "{pub_sub_2_id}",
+                "labels": ["in_subnet"],
+                "properties": {}
+            }
+        }
+    },
+    {
+        "Relationship": {
+            "Create": {
+                "branch_id": "{branch_id}",
+                "rel_id": "<priv_sub_2_to_az_2: generate_ag_id>",
+                "rel_type": "in_az",
+                "from": "{priv_sub_2_id}",
+                "to": "{az_2_id}",
+                "labels": ["in_az"],
+                "properties": {}
+            }
+        }
+    },
+    {
+        "Relationship": {
+            "Create": {
+                "branch_id": "{branch_id}",
+                "rel_id": "<priv_sub_2_to_az_2_priv_rt: generate_ag_id>",
+                "rel_type": "route_table",
+                "from": "{priv_sub_2_id}",
+                "to": "{az_2_priv_rt_id}",
+                "labels": ["route_table"],
+                "properties": {}
+            }
+        }
+    },
+    {
+        "Relationship": {
+            "Create": {
+                "branch_id": "{branch_id}",
+                "rel_id": "<az_2_priv_rt_to_vpc: generate_ag_id>",
+                "rel_type": "route_target",
+                "from": "{az_2_priv_rt_id}",
+                "to": "{vpc_id}",
+                "labels": ["route_target"],
+                "properties": {
+                    "source": "0.0.0.0/0",
+                    "destination": "10.0.0.0/16",
+                    "order": 0
+                }
+            }
+        }
+    },
+    {
+        "Relationship": {
+            "Create": {
+                "branch_id": "{branch_id}",
+                "rel_id": "<az_2_priv_rt_to_nat_2: generate_ag_id>",
+                "rel_type": "route_target",
+                "from": "{az_2_priv_rt_id}",
+                "to": "{nat_2_id}",
+                "labels": ["route_target"],
+                "properties": {
+                    "source": "0.0.0.0/0",
+                    "destination": "0.0.0.0/0",
+                    "order": 1
+                }
+            }
+        }
+    },
+    {
+        "Node": {
+            "Create": {
+                "branch_id": "{branch_id}",
+                "node_id": "<alb_id: generate_ag_id>",
+                "node_type": "aws_elb_v2_load_balancer",
+                "labels": [
+                    "AWS",
+                    "ELBV2",
+                    "LoadBalancer",
+                    "{alb_id}",
+                    "aws_elb_v2_load_balancer"
+                ],
+                "properties": {
+                    "name": "Test ALB",
+                    "tags": {
+                        "name": "Test ALB"
+                    }
+                }
+            }
+        }
+    },
+    {
+        "ViewportItem": {
+            "Create": {
+                "branch_id": "{branch_id}",
+                "viewport_item_id": "<alb_viewport_item_id: generate_ag_id>",
+                "model_item_id": "{alb_id}",
+                "model_item_type": "aws_elb_v2_load_balancer",
+                "viewport_id": "{viewport_id}",
+                "properties": {
+                    "position": {
+                        "x": 106,
+                        "y": 208
+                    },
+                    "parentId": "{vpc_viewport_item_id}"
+                }
+            }
+        }
+    },
+    {
+        "Node": {
+            "Create": {
+                "branch_id": "{branch_id}",
+                "node_id": "<listener_id: generate_ag_id>",
+                "node_type": "aws_elb_v2_listener",
+                "labels": [
+                    "AWS",
+                    "ELBV2",
+                    "Listener",
+                    "{listener_id}",
+                    "aws_elb_v2_listener"
+                ],
+                "properties": {
+                    "protocol": "HTTP",
+                    "port": 80,
+                    "apln_policy": "ELBSecurityPolicy-2016-08"
+                }
+            }
+        }
+    },
+    {
+        "Node": {
+            "Create": {
+                "branch_id": "{branch_id}",
+                "node_id": "<target_group_id: generate_ag_id>",
+                "node_type": "aws_elb_v2_target_group",
+                "labels": [
+                    "AWS",
+                    "ELBV2",
+                    "TargetGroup",
+                    "{target_group_id}",
+                    "aws_elb_v2_target_group"
+                ],
+                "properties": {
+                    "name": "Test Target Group",
+                    "health_check_protocol": "HTTP",
+                    "protocol": "HTTP",
+                    "port": 80,
+                    "healthy_threshold_count": 5
+                }
+            }
+        }
+    },
+    {
+        "Node": {
+            "Create": {
+                "branch_id": "{branch_id}",
+                "node_id": "<asg_id: generate_ag_id>",
+                "node_type": "aws_auto_scaling_auto_scaling_group",
+                "labels": [
+                    "AWS",
+                    "AutoScaling",
+                    "AutoScalingGroup",
+                    "{asg_id}",
+                    "aws_auto_scaling_auto_scaling_group"
+                ],
+                "properties": {
+                    "name": "Test Target Group",
+                    "health_check_protocol": "HTTP",
+                    "protocol": "HTTP",
+                    "port": 80,
+                    "healthy_threshold_count": 5
+                }
+            }
+        }
+    },
+    {
+        "ViewportItem": {
+            "Create": {
+                "branch_id": "{branch_id}",
+                "viewport_item_id": "<asg_viewport_item_id: generate_ag_id>",
+                "model_item_id": "{asg_id}",
+                "model_item_type": "aws_auto_scaling_auto_scaling_group",
+                "viewport_id": "{viewport_id}",
+                "properties": {
+                    "position": {
+                        "x": 401,
+                        "y": 208
+                    },
+                    "parentId": "{vpc_viewport_item_id}"
+                }
+            }
+        }
+    },
+    {
+        "Node": {
+            "Create": {
+                "branch_id": "{branch_id}",
+                "node_id": "<launch_template_id: generate_ag_id>",
+                "node_type": "aws_ec2_launch_template",
+                "labels": [
+                    "AWS",
+                    "EC2",
+                    "LaunchTemplate",
+                    "{lauch_template_id}",
+                    "aws_ec2_launch_template"
+                ],
+                "properties": {
+                    "launch_template_name": "Test Launch Template"
+                }
+            }
+        }
+    },
+    {
+        "Relationship": {
+            "Create": {
+                "branch_id": "{branch_id}",
+                "rel_id": "<alb_to_pub_sub_2: generate_ag_id>",
+                "rel_type": "terminates_in",
+                "from": "{alb_id}",
+                "to": "{pub_sub_2_id}",
+                "labels": ["terminates_in"],
+                "properties": {}
+            }
+        }
+    },
+    {
+        "ViewportItem": {
+            "Create": {
+                "branch_id": "{branch_id}",
+                "viewport_item_id": "<alb_to_pub_sub_2_viewport_item_id: generate_ag_id>",
+                "model_item_id": "{alb_to_pub_sub_2}",
+                "model_item_type": "aws_elb_v2_load_balancer_terminates_in_aws_ec2_public_subnet",
+                "viewport_id": "{viewport_id}",
+                "properties": {
+                    "position": {
+                        "x": 68,
+                        "y": 15
+                    },
+                    "parentId": "{pub_sub_2_viewport_item_id}"
+                }
+            }
+        }
+    },
+    {
+        "Relationship": {
+            "Create": {
+                "branch_id": "{branch_id}",
+                "rel_id": "<alb_to_pub_sub_1: generate_ag_id>",
+                "rel_type": "terminates_in",
+                "from": "{alb_id}",
+                "to": "{pub_sub_1_id}",
+                "labels": ["terminates_in"],
+                "properties": {}
+            }
+        }
+    },
+    {
+        "ViewportItem": {
+            "Create": {
+                "branch_id": "{branch_id}",
+                "viewport_item_id": "<alb_to_pub_sub_1_viewport_item_id: generate_ag_id>",
+                "model_item_id": "{alb_to_pub_sub_1}",
+                "model_item_type": "aws_elb_v2_load_balancer_terminates_in_aws_ec2_public_subnet",
+                "viewport_id": "{viewport_id}",
+                "properties": {
+                    "position": {
+                        "x": 106,
+                        "y": 208
+                    },
+                    "parentId": "{pub_sub_1_viewport_item_id}"
+                }
+            }
+        }
+    },
+    {
+        "Relationship": {
+            "Create": {
+                "branch_id": "{branch_id}",
+                "rel_id": "<listener_to_alb: generate_ag_id>",
+                "rel_type": "associated_with",
+                "from": "{listener_id}",
+                "to": "{alb_id}",
+                "labels": ["associated_with"],
+                "properties": {}
+            }
+        }
+    },
+    {
+        "Relationship": {
+            "Create": {
+                "branch_id": "{branch_id}",
+                "rel_id": "<listener_to_target_group: generate_ag_id>",
+                "rel_type": "action",
+                "from": "{listener_id}",
+                "to": "{target_group_id}",
+                "labels": ["action"],
+                "properties": {
+                    "type": "forward",
+                    "order": 0
+                }
+            }
+        }
+    },
+    {
+        "Relationship": {
+            "Create": {
+                "branch_id": "{branch_id}",
+                "rel_id": "<target_group_to_asg: generate_ag_id>",
+                "rel_type": "targets",
+                "from": "{target_group_id}",
+                "to": "{asg_id}",
+                "labels": ["targets"],
+                "properties": {}
+            }
+        }
+    },
+    {
+        "Relationship": {
+            "Create": {
+                "branch_id": "{branch_id}",
+                "rel_id": "<asg_to_priv_sub_2: generate_ag_id>",
+                "rel_type": "launches_in",
+                "from": "{asg_id}",
+                "to": "{priv_sub_2_id}",
+                "labels": ["launches_in"],
+                "properties": {}
+            }
+        }
+    },
+    {
+        "ViewportItem": {
+            "Create": {
+                "branch_id": "{branch_id}",
+                "viewport_item_id": "<asg_to_priv_sub_2_viewport_item_id: generate_ag_id>",
+                "model_item_id": "{asg_to_priv_sub_2}",
+                "model_item_type": "aws_auto_scaling_auto_scaling_group_launches_in_aws_ec2_private_subnet",
+                "viewport_id": "{viewport_id}",
+                "properties": {
+                    "position": {
+                        "x": 38,
+                        "y": 45
+                    },
+                    "parentId": "{priv_sub_2_viewport_item_id}"
+                }
+            }
+        }
+    },
+    {
+        "Relationship": {
+            "Create": {
+                "branch_id": "{branch_id}",
+                "rel_id": "<asg_to_priv_sub_1: generate_ag_id>",
+                "rel_type": "launches_in",
+                "from": "{asg_id}",
+                "to": "{priv_sub_1_id}",
+                "labels": ["launches_in"],
+                "properties": {}
+            }
+        }
+    },
+    {
+        "ViewportItem": {
+            "Create": {
+                "branch_id": "{branch_id}",
+                "viewport_item_id": "<asg_to_priv_sub_1_viewport_item_id: generate_ag_id>",
+                "model_item_id": "{asg_to_priv_sub_1}",
+                "model_item_type": "aws_auto_scaling_auto_scaling_group_launches_in_aws_ec2_private_subnet",
+                "viewport_id": "{viewport_id}",
+                "properties": {
+                    "position": {
+                        "x": 38,
+                        "y": 49
+                    },
+                    "parentId": "{priv_sub_1_viewport_item_id}"
+                }
+            }
+        }
+    },
+    {
+        "Relationship": {
+            "Create": {
+                "branch_id": "{branch_id}",
+                "rel_id": "<asg_to_launch_template: generate_ag_id>",
+                "rel_type": "launches",
+                "from": "{asg_id}",
+                "to": "{launch_template_id}",
+                "labels": ["launches"],
+                "properties": {}
+            }
+        }
+    }
+]

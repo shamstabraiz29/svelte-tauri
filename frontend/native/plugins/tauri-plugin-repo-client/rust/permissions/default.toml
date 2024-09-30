@@ -1,0 +1,13 @@
+"$schema" = "schemas/schema.json"
+[default]
+description = "Allows CloudCAD repos to access the CloudCAD API"
+permissions = [
+    "allow-create-branch",
+    "allow-get-commit-history",
+    "allow-get-repo",
+    "allow-remove-branch-properties",
+    "allow-remove-branch",
+    "allow-rename-branch",
+    "allow-set-repo",
+    "allow-upsert-branch-properties",
+]

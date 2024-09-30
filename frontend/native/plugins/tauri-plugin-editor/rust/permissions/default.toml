@@ -1,0 +1,32 @@
+"$schema" = "schemas/schema.json"
+[default]
+description = "Allows CloudCAD editor to access the CloudCAD API"
+permissions = [
+  "allow-create-branch",
+  "allow-custom-cursor",
+  "allow-evaluate-cloud-pattern",
+  "allow-get-cloud-patterns",
+  "allow-get-commit-history",
+  "allow-get-repo",
+  "allow-load-model",
+  "allow-remove-branch",
+  "allow-remove-branch-properties",
+  "allow-unload-model",
+  "allow-upsert-branch-properties",
+  "allow-viewport-create",
+  "allow-viewport-upsert-properties",
+  "allow-viewport-remove-properties",
+  "allow-viewport-remove",
+  "allow-viewport-item-upsert-properties",
+  "allow-viewport-item-remove-properties",
+  "allow-viewport-item-remove",
+  "allow-model-node-upsert-properties",
+  "allow-model-node-remove-properties",
+  "allow-save-updates",
+  "allow-set-test-model",
+  "allow-get-resource-item-viewport-data",
+  "allow-get-resource-items-viewport-data",
+  "allow-get-resource-item-schema",
+  "allow-get-resource-item-partials",
+  "allow-get-resource-items-partials",
+]

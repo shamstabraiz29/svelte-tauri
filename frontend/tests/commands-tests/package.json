@@ -1,0 +1,35 @@
+{
+    "name": "commands-tests",
+    "private": true,
+    "version": "0.0.0",
+    "type": "module",
+    "scripts": {
+        "dev": "vite",
+        "build": "tsc && vite build",
+        "preview": "vite preview",
+        "tauri": "tauri",
+        "wdio": "wdio run ./wdio.conf.ts"
+    },
+    "dependencies": {
+        "@tauri-apps/plugin-process": "^2.0.0-beta.2",
+        "@tauri-apps/plugin-shell": ">=2.0.0-beta.0",
+        "tauri-plugin-account-client": "file:./custom-modules/tauri-plugin-account-client",
+        "tauri-plugin-cognito-login": "file:./custom-modules/tauri-plugin-cognito-login",
+        "tauri-plugin-cognito-sign-up": "file:./custom-modules/tauri-plugin-cognito-sign-up",
+        "tauri-plugin-editor": "file:./custom-modules/tauri-plugin-editor",
+        "tauri-plugin-repo-client": "file:./custom-modules/tauri-plugin-repo-client",
+        "tauri-plugin-subscriber-client": "file:./custom-modules/tauri-plugin-subscriber-client"
+    },
+    "devDependencies": {
+        "@tauri-apps/api": "^2.0.0-rc.4",
+        "@tauri-apps/cli": ">=2.0.0-beta.0",
+        "@wdio/browser-runner": "^8.35.1",
+        "@wdio/cli": "^8.35.1",
+        "@wdio/mocha-framework": "^8.35.0",
+        "@wdio/spec-reporter": "^8.32.4",
+        "ts-node": "^10.9.2",
+        "tsconfig-paths": "^4.2.0",
+        "typescript": "^5.0.2",
+        "vite": "^5.0.0"
+    }
+}

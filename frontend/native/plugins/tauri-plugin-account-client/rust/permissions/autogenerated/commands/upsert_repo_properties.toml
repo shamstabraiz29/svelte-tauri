@@ -1,0 +1,13 @@
+# Automatically generated - DO NOT EDIT!
+
+"$schema" = "../../schemas/schema.json"
+
+[[permission]]
+identifier = "allow-upsert-repo-properties"
+description = "Enables the upsert_repo_properties command without any pre-configured scope."
+commands.allow = ["upsert_repo_properties"]
+
+[[permission]]
+identifier = "deny-upsert-repo-properties"
+description = "Denies the upsert_repo_properties command without any pre-configured scope."
+commands.deny = ["upsert_repo_properties"]

@@ -1,0 +1,13 @@
+# Automatically generated - DO NOT EDIT!
+
+"$schema" = "../../schemas/schema.json"
+
+[[permission]]
+identifier = "allow-model-node-upsert-properties"
+description = "Enables the model_node_upsert_properties command without any pre-configured scope."
+commands.allow = ["model_node_upsert_properties"]
+
+[[permission]]
+identifier = "deny-model-node-upsert-properties"
+description = "Denies the model_node_upsert_properties command without any pre-configured scope."
+commands.deny = ["model_node_upsert_properties"]

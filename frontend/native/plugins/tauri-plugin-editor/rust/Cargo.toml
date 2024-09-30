@@ -1,0 +1,57 @@
+[package]
+description = "Tauri plugin for CloudCAD repo client"
+name = "tauri-plugin-editor"
+# exclude = ["/examples", "/webview-dist", "/webview-src", "/node_modules"]
+authors.workspace = true 
+edition.workspace = true 
+license.workspace = true 
+links = "tauri-plugin-editor" # This is needed so the plugin does not accidentally linked in twice
+publish.workspace = true 
+rust-version.workspace = true 
+version.workspace = true 
+
+[package.metadata]
+ts_bindings_base_path.workspace = true
+
+[dependencies]
+# async-recursion.workspace = true
+anyhow.workspace = true
+futures.workspace = true
+
+log.workspace = true
+regex.workspace = true
+simple_logger.workspace = true
+
+once_cell.workspace = true
+rustc-hash.workspace = true
+serde.workspace = true
+serde_json.workspace = true
+specta-typescript.workspace = true
+specta-util.workspace = true
+specta.workspace = true
+tauri-plugin.workspace = true
+tauri-specta.workspace = true
+tauri.workspace = true
+thiserror.workspace = true
+tokio.workspace = true
+uuid.workspace = true
+wasmtime.workspace = true
+
+common-aggregates.workspace = true
+common-commands.workspace = true
+common-custom-cursor-client.workspace = true
+common-custom-cursor.workspace = true
+common-dtos.workspace = true
+common-events-player.workspace = true
+common-events.workspace = true
+common-libs-editor-api-client.workspace = true
+common-nmg-core.workspace = true
+common-simple-types.workspace = true
+common-traits.workspace = true
+common-wasm-components-store.workspace = true
+common-wasm-evaluators.workspace = true
+frontend-tauri-plugins-common.workspace = true
+
+[build-dependencies]
+serde_json.workspace = true
+tauri-plugin = {workspace = true, features = ["build"]}

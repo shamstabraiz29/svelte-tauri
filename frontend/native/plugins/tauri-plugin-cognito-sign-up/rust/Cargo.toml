@@ -1,0 +1,34 @@
+[package]
+name = "tauri-plugin-cognito-sign-up"
+# description = ""
+# exclude = ["/examples", "/webview-dist", "/webview-src", "/node_modules"]
+authors.workspace = true
+edition.workspace = true
+license.workspace = true
+links = "tauri-plugin-cognito-sign-up"
+publish.workspace = true
+rust-version.workspace = true
+version.workspace = true
+
+[package.metadata]
+ts_bindings_base_path.workspace = true
+
+[dependencies]
+anyhow.workspace = true
+log.workspace = true
+simple_logger.workspace = true
+
+serde.workspace = true
+specta-typescript.workspace = true
+specta.workspace = true
+tauri-plugin.workspace = true
+tauri-specta.workspace = true
+tauri.workspace = true
+thiserror.workspace = true
+
+auth_signup.workspace = true
+frontend-tauri-plugins-common.workspace = true
+
+[build-dependencies]
+serde_json.workspace = true
+tauri-plugin = {workspace = true, features = ["build"]}

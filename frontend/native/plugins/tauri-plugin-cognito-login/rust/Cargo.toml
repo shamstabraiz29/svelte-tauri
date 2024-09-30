@@ -1,0 +1,48 @@
+[package]
+description = "Tauri plugin for AWS Cognito login"
+name = "tauri-plugin-cognito-login"
+#exclude = ["/examples", "/webview-dist", "/webview-src", "/node_modules"]
+authors.workspace = true
+edition.workspace = true
+license.workspace = true
+links = "tauri-plugin-cognito-login"
+publish.workspace = true
+rust-version.workspace = true
+version.workspace = true
+
+[package.metadata]
+ts_bindings_base_path.workspace = true
+
+[dependencies]
+########################################################################################
+# CLOUDCAD
+########################################################################################
+auth_login.workspace = true
+auth_secure_store.workspace = true
+common-simple-types.workspace = true
+frontend-tauri-plugins-common.workspace = true
+
+########################################################################################
+# THIRD PARTY
+########################################################################################
+anyhow.workspace = true
+keyring.workspace = true
+log.workspace = true
+simple_logger.workspace = true
+
+schemars.workspace = true
+serde.workspace = true
+serde_json.workspace = true
+specta-typescript.workspace = true
+specta-util.workspace = true
+specta.workspace = true
+tauri-plugin.workspace = true
+tauri-specta.workspace = true
+tauri.workspace = true
+thiserror.workspace = true
+
+[build-dependencies]
+schemars.workspace = true
+
+serde_json.workspace = true
+tauri-plugin = {workspace = true, features = ["build"]}

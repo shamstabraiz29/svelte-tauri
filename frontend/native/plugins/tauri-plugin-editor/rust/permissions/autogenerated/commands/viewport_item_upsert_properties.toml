@@ -1,0 +1,13 @@
+# Automatically generated - DO NOT EDIT!
+
+"$schema" = "../../schemas/schema.json"
+
+[[permission]]
+identifier = "allow-viewport-item-upsert-properties"
+description = "Enables the viewport_item_upsert_properties command without any pre-configured scope."
+commands.allow = ["viewport_item_upsert_properties"]
+
+[[permission]]
+identifier = "deny-viewport-item-upsert-properties"
+description = "Denies the viewport_item_upsert_properties command without any pre-configured scope."
+commands.deny = ["viewport_item_upsert_properties"]

@@ -1,0 +1,80 @@
+{
+    "login-plugin": {
+        "identifier": "login-plugin",
+        "description": "permissions to the login plugin",
+        "context": "local",
+        "windows": [
+            "main"
+        ],
+        "permissions": [
+            "cognito-login:default"
+        ],
+        "platforms": [
+            "linux",
+            "macOS",
+            "windows",
+            "android",
+            "iOS"
+        ]
+    },
+    "migrated": {
+        "identifier": "migrated",
+        "description": "permissions that were migrated from v1",
+        "context": "local",
+        "windows": [
+            "main"
+        ],
+        "permissions": [
+            "core:path:default",
+            "core:event:default",
+            "core:window:default",
+            "core:app:default",
+            "core:resources:default",
+            "core:menu:default",
+            "core:tray:default"
+        ],
+        "platforms": [
+            "linux",
+            "macOS",
+            "windows",
+            "android",
+            "iOS"
+        ]
+    },
+    "signup-plugin": {
+        "identifier": "signup-plugin",
+        "description": "permissions to the signup plugin",
+        "context": "local",
+        "windows": [
+            "main"
+        ],
+        "permissions": [
+            "cognito-sign-up:default"
+        ],
+        "platforms": [
+            "linux",
+            "macOS",
+            "windows",
+            "android",
+            "iOS"
+        ]
+    },
+    "subscriber-plugin": {
+        "identifier": "subscriber-plugin",
+        "description": "permissions to the subscriber plugin",
+        "context": "local",
+        "windows": [
+            "main"
+        ],
+        "permissions": [
+            "subscriber-client:default"
+        ],
+        "platforms": [
+            "linux",
+            "macOS",
+            "windows",
+            "android",
+            "iOS"
+        ]
+    }
+}
